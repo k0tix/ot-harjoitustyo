@@ -1,0 +1,115 @@
+❯ git log --stat | cat
+commit 8d70f0ff10cf5ec9800c78dd3e13ab081eab3c2e
+Author: k0tix <otto.pirttimaa@gmail.com>
+Date:   Wed Mar 13 14:00:32 2019 +0200
+
+    poista file1 ja uudelleennimeä file2
+
+ tiedostoja/file2             | 0
+ tiedostoja/{file1 => file22} | 0
+ 2 files changed, 0 insertions(+), 0 deletions(-)
+
+commit d9ef56dc1fb72e5d56b78cf600c17b462f672316
+Author: k0tix <otto.pirttimaa@gmail.com>
+Date:   Wed Mar 13 13:57:23 2019 +0200
+
+    lisää tiedostoja
+
+ tiedostoja/file1 | 0
+ tiedostoja/file2 | 0
+ tiedostoja/file3 | 0
+ 3 files changed, 0 insertions(+), 0 deletions(-)
+
+commit d8bee6ab4fae61e9cda7693b061a81273a7652ea
+Author: k0tix <otto.pirttimaa@gmail.com>
+Date:   Wed Mar 13 13:53:34 2019 +0200
+
+    muutoksia ekaan ja kolmanteen
+
+ eka.txt    | 4 +---
+ kolmas.txt | 3 ++-
+ 2 files changed, 3 insertions(+), 4 deletions(-)
+
+commit 0e1231514af1d38c420d94c0a10e8060019def28
+Author: k0tix <otto.pirttimaa@gmail.com>
+Date:   Wed Mar 13 13:52:00 2019 +0200
+
+    uudelleennimeä tiedosto
+
+ tiedosto.txt => eka.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit f3f09dbc21c6645c734008b8a87f8becfa91a184
+Author: k0tix <otto.pirttimaa@gmail.com>
+Date:   Wed Mar 13 13:50:14 2019 +0200
+
+    poista toinen.txt
+
+ toinen.txt | 1 -
+ 1 file changed, 1 deletion(-)
+
+commit 7a0a9c72a5ebcccb2f2ac9155427ea2e3b06032d
+Author: k0tix <otto.pirttimaa@gmail.com>
+Date:   Wed Mar 13 13:47:29 2019 +0200
+
+    muutoksia ja lisäyksiä tiedostoon
+
+ tiedosto.txt | 29 ++++++++++++++++++-----------
+ 1 file changed, 18 insertions(+), 11 deletions(-)
+
+commit 1a5e49b52a0fb47d28cb633b9941f50773503ebf
+Author: k0tix <otto.pirttimaa@gmail.com>
+Date:   Wed Mar 13 13:45:01 2019 +0200
+
+    muutoksia tiedostoon
+
+ tiedosto.txt | 29 +++++++++++++++++++++++++++++
+ 1 file changed, 29 insertions(+)
+
+commit a7b7b63fa48c24a76c84518b4ffc1cc789a9ea72
+Author: k0tix <otto.pirttimaa@gmail.com>
+Date:   Wed Mar 13 13:35:38 2019 +0200
+
+    stuff lisätty
+
+ stuff/joku.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit 2371f25905b17bfb84ec2a8c650c73af143c1439
+Author: k0tix <otto.pirttimaa@gmail.com>
+Date:   Wed Mar 13 13:34:23 2019 +0200
+
+    muutoksia toiseen ja kolmanteen
+
+ kolmas.txt | 1 +
+ toinen.txt | 1 +
+ 2 files changed, 2 insertions(+)
+
+commit 92cb9efb3730a6e4dac9823b1f6cef46836523b1
+Author: k0tix <otto.pirttimaa@gmail.com>
+Date:   Wed Mar 13 13:33:18 2019 +0200
+
+    kolmas lisätty
+
+ kolmas.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit edba8b3a07ece1bb9fc2fb78ce680189a7c8751c
+Author: k0tix <otto.pirttimaa@gmail.com>
+Date:   Wed Mar 13 13:32:17 2019 +0200
+
+    muutos ja lisäys
+
+ tiedosto.txt | 1 +
+ toinen.txt   | 0
+ 2 files changed, 1 insertion(+)
+
+commit 68aaee94d9dfcee04cfb849f2e0d5e7ea8a6ffa2
+Author: k0tix <otto.pirttimaa@gmail.com>
+Date:   Wed Mar 13 13:31:02 2019 +0200
+
+    tiedosto.txt luotu
+
+ tiedosto.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
