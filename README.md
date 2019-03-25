@@ -1,5 +1,8 @@
 # Ohjelmistotekniikka
 
+## Dokumentaatio
+[Vaatimusmäärittely](https://github.com/k0tix/ot-harjoitustyo/blob/master/dokumentaatio/vaatimusmaarittely.md)
+
 ## Tehtävät
 
 ### Viikko 1
