@@ -1,5 +1,7 @@
 package ui;
 
+import domain.Deck;
+
 /**
  *
  * @author k0tix
@@ -11,7 +13,10 @@ public class Main {
      */
     public static void main(String[] args) {
         
-        // TODO code application logic here
+        Deck deck = new Deck();
+        System.out.println(deck.isEmpty());
+        deck.initializeCards();
+        System.out.println(deck.isEmpty());
     }
     
 }
