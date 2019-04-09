@@ -5,8 +5,8 @@ package domain;
  * @author k0tix
  */
 public class Card {
-    public enum Type {NUMBER, SKIP, REVERSE, DRAW_TWO, WILD, WILD_DRAW_FOUR}
-    public enum Color {RED, YELLOW, GREEN, BLUE}
+    public enum Type { NUMBER, SKIP, REVERSE, DRAW_TWO, WILD, WILD_DRAW_FOUR }
+    public enum Color { RED, YELLOW, GREEN, BLUE }
     public enum Value {
         ZERO(0), ONE(1), TWO(2), THREE(3), FOUR(4), FIVE(5), SIX(6), SEVEN(7), EIGHT(8), NINE(9), SPECIAL(-1);
         
@@ -45,7 +45,7 @@ public class Card {
 
     @Override
     public String toString() {
-        switch(this.type){
+        switch (this.type) {
             case NUMBER:
                 return String.format("%s %d", this.color, this.number.getCardValue());
             case REVERSE:
