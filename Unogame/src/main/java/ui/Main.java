@@ -20,13 +20,13 @@ public class Main {
         
         int playerAmount = 0;
         
-        while(true) {
+        while (true) {
             String players = read.nextLine();
             
             try {
                 int amount = Integer.parseInt(players);
                 
-                if(amount < 2 || amount > 10) {
+                if (amount < 2 || amount > 10) {
                     System.out.println("There can only be 2-10 players!");
                 } else {
                     playerAmount = amount;
