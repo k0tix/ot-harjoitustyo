@@ -35,7 +35,7 @@ public class Deck {
         Arrays.stream(Color.values()).forEach(color -> {
             this.deck.add(new Card(Type.NUMBER, color, Value.ZERO));
             
-            for(int num = 1; num < 10; num++) {
+            for (int num = 1; num < 10; num++) {
                 this.deck.add(new Card(Type.NUMBER, color, Value.values()[num]));
                 this.deck.add(new Card(Type.NUMBER, color, Value.values()[num]));
             }
@@ -54,7 +54,7 @@ public class Deck {
         });
         
         //add wild cards
-        for(int i = 0; i < 4; i++) {
+        for (int i = 0; i < 4; i++) {
             this.deck.add(new Card(Type.WILD, null, Value.SPECIAL));
             this.deck.add(new Card(Type.WILD, null, Value.SPECIAL));
             

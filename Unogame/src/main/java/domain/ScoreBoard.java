@@ -28,7 +28,6 @@ public class ScoreBoard {
     }
     
     public void updateScores(HashMap<String, Integer> changes) {
-        
         for (String id : changes.keySet()) {
             addToScore(id, changes.get(id));
         }
