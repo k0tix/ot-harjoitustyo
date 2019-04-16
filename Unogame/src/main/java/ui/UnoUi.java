@@ -1,49 +1,49 @@
 package ui;
 
 import domain.Deck;
-import java.util.Scanner;
+import domain.Uno;
+
+import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+import javafx.scene.control.Label;
+import javafx.scene.layout.BorderPane;
 
 /**
  *
  * @author k0tix
  */
-public class Main {
-
-    /**
-     * @param args the command line arguments
-     */
+public class UnoUi extends Application {
+    private Uno game;
+    private ViewController views;
+        
     public static void main(String[] args) {
+        launch(args);
+    }
+    
+    @Override
+    public void init() throws Exception {
+        this.game = new Uno();
+    }
+
+    @Override
+    public void start(Stage stage) throws Exception {
         
-        Scanner read = new Scanner(System.in);
-        System.out.println("UNOGAME");
-        System.out.println("How many player will be playing (2-10)?");
+        BorderPane rootLayout = new BorderPane();
         
-        int playerAmount = 0;
+        this.views = new ViewController(rootLayout);
         
-        while (true) {
-            String players = read.nextLine();
-            
-            try {
-                int amount = Integer.parseInt(players);
-                
-                if (amount < 2 || amount > 10) {
-                    System.out.println("There can only be 2-10 players!");
-                } else {
-                    playerAmount = amount;
-                    break;
-                }
-                
-            } catch (Exception e) {
-                System.out.println("Only valid integers allowed as input!");
-            }
-        }
+        Label gameData = new Label("Here is some data about the game");
+        rootLayout.setTop(gameData);
         
-        System.out.println(String.format("##########\n%d players\n##########", playerAmount));
+        StartView startScreen = new StartView(game, this.views);
+        Scene scene = new Scene(rootLayout, 600, 400);
         
-        Deck deck = new Deck();
-        System.out.println(deck.isEmpty());
-        deck.initializeCards();
-        System.out.println(deck.isEmpty());
+        this.views.addView("startscreen", startScreen.getView());
+        this.views.setView("startscreen");                
+        stage.setTitle("Uno");
+        stage.setScene(scene);
+        stage.show();
     }
     
 }
