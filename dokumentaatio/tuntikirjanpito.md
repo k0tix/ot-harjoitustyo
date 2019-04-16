@@ -8,4 +8,6 @@
 | 2.4 | 0.2 | perus testit pakalle |
 | 9.4 | 0.6 | checkstylen käyttöönotto ja luokkakaavion luonti |
 | 9.4 | 1 | pelaaja ja pistetaulun luonti |
-| Yhteensä | 8 | |
+| 15.4 | 2 | perehtyminen javafx:ään |
+| 16.4 | 2 | alustavan käyttöliittymän luonti|
+| Yhteensä | 11.8 | |
