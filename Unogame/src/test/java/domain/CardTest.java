@@ -48,4 +48,16 @@ public class CardTest {
         card = new Card(Type.REVERSE, Color.GREEN, Value.SPECIAL);
         assertEquals("GREEN REVERSE", card.toString());
     }
+    
+    @Test
+    public void toStringReturnsCorrectValuesForSkipCards() {
+        card = new Card(Type.SKIP, Color.GREEN, Value.SPECIAL);
+        assertEquals("GREEN SKIP", card.toString());
+    }
+    
+    @Test
+    public void toStringReturnsCorrectValuesForDrawTwoCards() {
+        card = new Card(Type.DRAW_TWO, Color.RED, Value.SPECIAL);
+        assertEquals("RED DRAW_TWO", card.toString());
+    }
 }
