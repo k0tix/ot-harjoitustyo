@@ -13,5 +13,6 @@
 | 16.4 | 2 | alustavan käyttöliittymän luonti|
 | 24.5 | 1 | peliluokkien kehittämistä |
 | 25.5 | 4 | käyttöliittymän jatkamista ja näkymä controllerin luonti |
+| 26.5 | 0.5 | testien kirjoittamista |
 | 26.5 | 1 | javadocin kirjoittelua |
-| Yhteensä | 19.8 | |
+| Yhteensä | 20.3 | |
