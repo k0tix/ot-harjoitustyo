@@ -8,6 +8,6 @@
     <suppress files="ui.UnoUi.java" checks="[a-zA-Z0-9]*"/>
     <suppress files="ui.ViewController.java" checks="[a-zA-Z0-9]*"/>
     <suppress files="ui.GameView.java" checks="[a-zA-Z0-9]*"/>
-    <suppress files="ui.SetPlayerView.java" checks="[a-zA-Z0-9]*"/>
+    <suppress files="ui.AddPlayerView.java" checks="[a-zA-Z0-9]*"/>
     <suppress files="ui.StartView.java" checks="[a-zA-Z0-9]*"/>
 </suppressions>
