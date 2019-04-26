@@ -16,13 +16,10 @@ import javafx.scene.layout.VBox;
  *
  * @author k0tix
  */
-public class StartView {
-    private Uno game;
-    
+public class StartView {    
     private ViewController views;
     
-    public StartView(Uno uno, ViewController views) {
-        this.game = uno;
+    public StartView(ViewController views) {
         this.views = views;
     }
     
@@ -45,22 +42,18 @@ public class StartView {
         startmenu.getChildren().add(playerAmount);
         startmenu.getChildren().add(playButton);
         
-        
         playButton.setOnMouseClicked((event) -> {
             int players = playerAmount.getValue();
-            this.game.setPlayerAmount(players);
             
             ArrayList<Player> p = new ArrayList<>();
             for(int i = 1; i <= players; i++) {
                 p.add(new Player("Player " + i));
             }
             
-            for(Player a : p) {
-                System.out.println(a.getName() + " " + a.getId());
-            }
+            this.views.getGame().setPlayers(p);
+            this.views.getGame().startRound(0);
             
-            this.game.setPlayers(p);
-            this.game.playRound(0);
+            this.views.setView(new AddPlayerView(new ArrayList<>(), this.views).getView(players));
         });
         
         return startmenu;
