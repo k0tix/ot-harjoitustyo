@@ -9,6 +9,8 @@ Sovellus toteuttaa uno-korttipelin ja mahdollistaa sen pelaamisen konetta ja toi
 
 [Arkkitehtuuri](https://github.com/k0tix/ot-harjoitustyo/blob/master/dokumentaatio/arkkitehtuuri.md)
 
+[Käyttöohje](https://github.com/k0tix/ot-harjoitustyo/blob/master/dokumentaatio/kayttoohje.md)
+
 ## Komennot
 
 ### Testit
