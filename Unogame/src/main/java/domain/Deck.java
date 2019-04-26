@@ -7,7 +7,7 @@ import java.util.Collections;
 
 /**
  *
- * @author k0tix
+ * Luokka toteuttaa korttipakan
  */
 public class Deck {
     private ArrayList<Card> deck;
@@ -16,21 +16,36 @@ public class Deck {
         this.deck = new ArrayList<>();
     }
     
+    /**
+     * Metodi sekoittaa korttipakan
+     */
     public void shuffle() {
         Collections.shuffle(deck);
     }
     
+    /**
+     * Metodi palauttaa pakan päällimäisen kortin ja poistaa sen korttipakasta
+     * @return päällimainen kortti
+     */
     public Card pick() {
         return this.deck.remove(0);
     }
     
+    /**
+     * Metodi kerto onko korttipakassa vielä kortteja
+     * @return onko tyhjä
+     */
     public boolean isEmpty() {
         return this.deck.isEmpty();
     }
     
+    /**
+     * Metodi alustaa korttipakan ja lisää sinne Uno-pakassa
+     * olevat kortit ja lopuksi sekoittaa pakan
+     */
     public void initializeCards() {
         this.deck.clear();
-        
+                
         //add number cards, 1x 0 for each color and 2x other numbers
         Arrays.stream(Color.values()).forEach(color -> {
             if (color.equals(Color.WILD)) {
