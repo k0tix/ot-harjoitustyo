@@ -38,6 +38,14 @@ public class UnoTest {
     public void directionIsChangedCorrectly() {
         uno.changeDirection();
         assertEquals("anticlockwise", uno.getDirection());
+        uno.changeDirection();
+        assertEquals("clockwise", uno.getDirection());
+    }
+    
+    @Test
+    public void playersAreSettedCorrectly() {
+        uno.setPlayers(new ArrayList<>());
+        assertTrue(uno.getPlayers().isEmpty());
     }
     
     @Test
@@ -45,6 +53,9 @@ public class UnoTest {
         assertEquals(players.get(0), uno.getCurrentPlayer());
         uno.nextPlayer();
         assertEquals(players.get(1), uno.getCurrentPlayer());
+        uno.nextPlayer();
+        uno.nextPlayer();
+        assertEquals(players.get(0), uno.getCurrentPlayer());
     }
     
     @Test
@@ -52,6 +63,9 @@ public class UnoTest {
         assertEquals(players.get(0), uno.getCurrentPlayer());
         uno.lastPlayer();
         assertEquals(players.get(2), uno.getCurrentPlayer());
+        uno.lastPlayer();
+        uno.lastPlayer();
+        assertEquals(players.get(0), uno.getCurrentPlayer());
     }
     
     @Test
