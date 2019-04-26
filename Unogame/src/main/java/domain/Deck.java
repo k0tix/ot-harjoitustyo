@@ -33,6 +33,9 @@ public class Deck {
         
         //add number cards, 1x 0 for each color and 2x other numbers
         Arrays.stream(Color.values()).forEach(color -> {
+            if (color.equals(Color.WILD)) {
+                return;
+            }
             this.deck.add(new Card(Type.NUMBER, color, Value.ZERO));
             
             for (int num = 1; num < 10; num++) {
@@ -43,6 +46,9 @@ public class Deck {
         
         //add action cards
         Arrays.stream(Color.values()).forEach(color -> {
+            if (color.equals(Color.WILD)) {
+                return;
+            }
             this.deck.add(new Card(Type.SKIP, color, Value.SPECIAL));
             this.deck.add(new Card(Type.SKIP, color, Value.SPECIAL));
             
@@ -55,11 +61,9 @@ public class Deck {
         
         //add wild cards
         for (int i = 0; i < 4; i++) {
-            this.deck.add(new Card(Type.WILD, null, Value.SPECIAL));
-            this.deck.add(new Card(Type.WILD, null, Value.SPECIAL));
+            this.deck.add(new Card(Type.CHANGE_COLOR, Color.WILD, Value.SPECIAL));
             
-            this.deck.add(new Card(Type.WILD_DRAW_FOUR, null, Value.SPECIAL));
-            this.deck.add(new Card(Type.WILD_DRAW_FOUR, null, Value.SPECIAL));
+            this.deck.add(new Card(Type.DRAW_FOUR, Color.WILD, Value.SPECIAL));
         }
         
         shuffle();

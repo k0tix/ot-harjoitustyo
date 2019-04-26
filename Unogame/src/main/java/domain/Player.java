@@ -35,4 +35,8 @@ public class Player {
         return this.cards.remove(index);
     }
     
+    public ArrayList<Card> getCards() {
+        return this.cards;
+    }
+    
 }
