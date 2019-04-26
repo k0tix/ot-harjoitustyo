@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
- *
- * @author k0tix
+ * Luokka tarjoaa toiminnallisuutta pelin pistetilanteen seuraamiseen
+ * 
  */
 public class ScoreBoard {
     
@@ -22,17 +22,30 @@ public class ScoreBoard {
         return this.points.get(playerId);
     }
     
+    /**
+     * Metodi kasvattaa pelaajan kokonaispisteitä
+     * @param playerId pelaajan tunniste
+     * @param amount kasvatettava pistemäärä
+     */
     public void addToScore(String playerId, int amount) {
         int current = points.get(playerId);
         this.points.put(playerId, current + amount);
     }
     
+    /**
+     * Metodi päivittää kokonaispistetilanteen pelaajien muuttuneiden pisteiden mukaan
+     * @param changes muutokset pisteisiin
+     */
     public void updateScores(HashMap<String, Integer> changes) {
         for (String id : changes.keySet()) {
             addToScore(id, changes.get(id));
         }
     }
     
+    /**
+     * Metodi palauttaa pistetilanteen tekstimuodossa
+     * @return tilanne tekstimuodossa
+     */
     @Override
     public String toString() {
         StringBuilder result = new StringBuilder("Scores: ");

@@ -3,6 +3,9 @@ package domain;
 import java.util.ArrayList;
 import domain.Card.*;
 
+/**
+ * Luokka tarjoaa toiminnallisuutta Uno-pelin pelilogiikkaan ja vuorojen kulkuun
+ */
 public class Uno {
     private ScoreBoard score;
     private ArrayList<Player> players;
@@ -31,6 +34,11 @@ public class Uno {
         return this.players;
     }
     
+    /**
+     * Metodi aloittaa yksittäisen pelin ja luo sitä varten uuden pakan
+     * ja jakaa aloituskortit pelaajille
+     * @param startingPoint pelaaja, josta aloitetaan
+     */
     public void startRound(int startingPoint) {
         this.deck = new Deck();
         this.deck.initializeCards();
@@ -40,6 +48,14 @@ public class Uno {
         this.lastPlayedCard = deck.pick();
     }
     
+    /**
+     * Metodi pelaa yhden pelaajan valitseman kortin, asettaa sen päällimäiseksi ja 
+     * muuttaa pelin tilaa ja muiden pelaajien korttien määrä ja pelivuoroa pelatun kortin
+     * mukaan
+     * @param card pelattu kortti
+     * @param index kortin indeksi
+     * @return onnistuiko kortin pelaaminen
+     */
     public boolean playTurn(Card card, int index) {
         if (!isCardPlayable(card)) {
             return false;
@@ -66,6 +82,11 @@ public class Uno {
         return true;
     }
     
+    /**
+     * Metodi kertoo voiko kyseisen kortin pelata viimeksi pelatun kortin päälle
+     * @param card pelattava kortti
+     * @return voiko kortin pelata
+     */
     public boolean isCardPlayable(Card card) {
         if (card.getColor().equals(Color.WILD)) {
             return true;
@@ -86,6 +107,10 @@ public class Uno {
         return this.players.get(currentPlayer);
     }
     
+    /**
+     * Metodi jakaa pelaajille 7 aloituskorttia
+     * @param deck pelissä käytettävä pakka 
+     */
     public void initializePlayersCards(Deck deck) {
         for (Player p : this.players) {
             for (int i = 0; i < 7; i++) {
@@ -103,10 +128,16 @@ public class Uno {
         return this.direction ? "clockwise" : "anticlockwise";
     }
     
+    /**
+     * Metodi vaihtaa pelin suuntaa
+     */
     public void changeDirection() {
         this.direction = !direction;
     }
     
+    /**
+     * Metodi siirtää vuoron seuraavalle pelaajalle
+     */
     public void nextPlayer() {
        if(this.currentPlayer + 1 < players.size()) {
            this.currentPlayer += 1;
@@ -115,6 +146,9 @@ public class Uno {
        }
     }
     
+    /**
+     * Metodi siirtää vuoron edelliselle pelaajalle
+     */
     public void lastPlayer() {
         if(this.currentPlayer - 1 < 0) {
             this.currentPlayer = players.size() - 1;

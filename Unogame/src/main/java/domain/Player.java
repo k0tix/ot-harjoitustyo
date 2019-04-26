@@ -4,11 +4,11 @@ import java.util.ArrayList;
 import java.util.UUID;
 
 /**
- *
- * @author k0tix
+ * Luokka tarjoaa pelaajan toiminnallisuutta eli pitää kirjaa nimesta, luo
+ * yksilöllisen id:n ja pitää listaa pelaajan kädessä olevista korteista
+ * 
  */
 public class Player {
-    
     private String name;
     private String id;
     private ArrayList<Card> cards;
@@ -27,10 +27,19 @@ public class Player {
         return this.name;
     }
     
+    /**
+     * Lisää pelaajan käteen uuden kortin
+     * @param card lisättävä kortti
+     */
     public void giveCard(Card card) {
         this.cards.add(card);
     }
     
+    /**
+     * Pelaa kortin pelaajan kädestä
+     * @param index kortin indeksi listassa
+     * @return pelattava kortti
+     */
     public Card playCard(int index) {
         return this.cards.remove(index);
     }

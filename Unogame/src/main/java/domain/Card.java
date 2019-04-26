@@ -1,12 +1,23 @@
 package domain;
 
 /**
+ * Luokka tarjoaa Uno-kortin toiminnallisuuden
  *
- * @author k0tix
  */
 public class Card {
+    /**
+     * Mahdolliset kortin tyypit
+     */
     public enum Type { NUMBER, SKIP, REVERSE, DRAW_TWO, CHANGE_COLOR, DRAW_FOUR }
+    
+    /**
+     * Mahdolliset kortin värit
+     */
     public enum Color { RED, YELLOW, GREEN, BLUE, WILD }
+    
+    /**
+     * Mahdolliset kortin arvot
+     */
     public enum Value {
         ZERO(0), ONE(1), TWO(2), THREE(3), FOUR(4), FIVE(5), SIX(6), SEVEN(7), EIGHT(8), NINE(9), SPECIAL(-1);
         
@@ -16,6 +27,10 @@ public class Card {
             this.cardValue = value;
         }
         
+        /**
+         * Metodi palauttaa kortin arvon numerona
+         * @return kortin numeroarvo
+         */
         public int getCardValue() {
             return cardValue;
         }
@@ -46,7 +61,10 @@ public class Card {
     public void setColor(Color color) {
         this.color = color;
     }
-
+    
+    /**
+    * Palauttaa kortin tyypin ja värin tekstimuodossa
+    */
     @Override
     public String toString() {
         switch (this.type) {
