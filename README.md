@@ -26,6 +26,11 @@ mvn test jacoco:report
 mvn jxr:jxr checkstyle:checkstyle
 ```
 
+### JavaDoc
+```
+mvn javadoc:javadoc
+```
+
 ### Jar-tiedoston luonti ja suoritus
 ```
 mvn package

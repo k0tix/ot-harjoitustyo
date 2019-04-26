@@ -8,6 +8,10 @@
 | 2.4 | 0.2 | perus testit pakalle |
 | 9.4 | 0.6 | checkstylen käyttöönotto ja luokkakaavion luonti |
 | 9.4 | 1 | pelaaja ja pistetaulun luonti |
-| 15.4 | 2 | perehtyminen javafx:ään |
+| 15.4 | 2 | perehtyminen javafx:n fxml tiedostoihin|
+| 16.4 | 2 | perehtyminen javafx käyttöliittymän luontiin koodimääritteisesti |
 | 16.4 | 2 | alustavan käyttöliittymän luonti|
-| Yhteensä | 11.8 | |
+| 24.5 | 1 | peliluokkien kehittämistä |
+| 25.5 | 4 | käyttöliittymän jatkamista ja näkymä controllerin luonti |
+| 26.5 | 1 | javadocin kirjoittelua |
+| Yhteensä | 19.8 | |
