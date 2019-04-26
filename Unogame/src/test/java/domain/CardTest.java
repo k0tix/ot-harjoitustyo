@@ -39,8 +39,8 @@ public class CardTest {
     
     @Test
     public void toStringReturnsCorrectValuesForWildCards() {
-        card = new Card(Type.WILD, Color.YELLOW, Value.TWO);
-        assertEquals("WILD", card.toString());
+        card = new Card(Type.CHANGE_COLOR, Color.YELLOW, Value.TWO);
+        assertEquals("CHANGE_COLOR", card.toString());
     }
     
     @Test
