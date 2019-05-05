@@ -17,16 +17,18 @@ import javafx.scene.layout.VBox;
  * @author k0tix
  */
 public class StartView {    
-    private ViewController views;
+    private Uno game;
+    private BorderPane rootLayout;
     
-    public StartView(ViewController views) {
-        this.views = views;
+    public StartView(BorderPane rootLayout, Uno game) {
+        this.game = game;
+        this.rootLayout = rootLayout;
     }
     
     public Parent getView() {
         VBox startmenu = new VBox();
         startmenu.setSpacing(10);
-        startmenu.setStyle("-fx-background-color: #3f4144");
+        startmenu.setStyle("-fx-background-color: #333333");
         startmenu.setAlignment(Pos.CENTER);
                 
         Label text = new Label("How many players are playing?");
@@ -45,15 +47,9 @@ public class StartView {
         playButton.setOnMouseClicked((event) -> {
             int players = playerAmount.getValue();
             
-            ArrayList<Player> p = new ArrayList<>();
-            for(int i = 1; i <= players; i++) {
-                p.add(new Player("Player " + i));
-            }
+            this.game.startRound(0);
             
-            this.views.getGame().setPlayers(p);
-            this.views.getGame().startRound(0);
-            
-            this.views.setView(new AddPlayerView(new ArrayList<>(), this.views).getView(players));
+            this.rootLayout.setCenter(new AddPlayerView(rootLayout, game).getView(players));
         });
         
         return startmenu;

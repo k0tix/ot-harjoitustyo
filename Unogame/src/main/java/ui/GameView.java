@@ -1,55 +1,137 @@
 package ui;
 
 import domain.Card;
+import domain.Uno;
 import java.util.ArrayList;
-import javafx.event.ActionEvent;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 
 /**
  *
  * @author k0tix
  */
 public class GameView {
-    
-    private ViewController views;
-    private Card selected;
-    private int index;
-    
-    public GameView(ViewController views) {
-        this.views = views;
+
+    private BorderPane rootLayout;
+    private Uno game;
+
+    public GameView(BorderPane rootLayout, Uno game) {
+        this.rootLayout = rootLayout;
+        this.game = game;
     }
-    
-    public Parent getView(ArrayList<Card> hand) {
+
+    public Parent getMainView() {
+        ArrayList<Card> hand = game.getCurrentPlayer().getCards();
+        System.out.println(game.getPlayerAmount());
+
+        System.out.println("asd");
+
         HBox cards = new HBox(10);
         ScrollPane scroller = new ScrollPane(cards);
         scroller.setFitToHeight(true);
-        
-        cards.setStyle("-fx-background-color: #3f4144");
+
+        cards.setStyle("-fx-background-color: #333333");
         cards.setAlignment(Pos.CENTER);
-        
-        for(int i = 0; i < hand.size(); i++) {
-            Button card = new Button(hand.get(i).toString());
+
+        setCards(cards);
+
+        rootLayout.setStyle("-fx-background-color: #333333;");
+
+        return scroller;
+    }
+
+    public ImageView getTopCard() {
+        ImageView topCard = new ImageView(getFilePath(game.getLastPlayedCard().toString()));
+        return topCard;
+    }
+
+    private String getFilePath(String fileName) {
+        System.out.println(fileName);
+        return ClassLoader.getSystemClassLoader().getResource("images/" + fileName).toString();
+    }
+
+    private void setCards(HBox cards) {
+        cards.getChildren().clear();
+
+        ArrayList<Card> hand = game.getCurrentPlayer().getCards();
+        for (int i = 0; i < hand.size(); i++) {
+            ImageView card = new ImageView(getFilePath(hand.get(i).toString()));
             card.setId("" + i);
-            String color = hand.get(i).getColor().toString().toLowerCase();
-            color = color.equals("wild") ? "black" : color;
-            card.setStyle("-fx-background-color: " + color + "; -fx-text-fill: white; -fx-stroke: black; -fx-stroke-width: 2px; -fx-pref-width: 100px; -fx-pref-height: 200px;");
-            card.setWrapText(true);
             cards.getChildren().add(card);
-            
+
             card.setOnMouseClicked((event) -> {
-                Button b = (Button) event.getSource();
-                int index = Integer.parseInt(b.getId());
-                if (this.views.getGame().playTurn(hand.get(index), index)) {
-                    this.views.setView(new GameView(views).getView(this.views.getGame().getCurrentPlayer().getCards()));
+                ImageView c = (ImageView) event.getSource();
+                int idx = Integer.parseInt(c.getId());
+                Card cardObject = hand.get(idx);
+
+                if (cardObject.getType().equals(Card.Type.CHANGE_COLOR) || cardObject.getType().equals(Card.Type.DRAW_FOUR)) {
+                    rootLayout.setCenter(selectColor(cardObject, cards));
+                } else if (game.playTurn(cardObject)) {
+                    setCards(cards);
+                    rootLayout.setCenter(getTopCard());
                 }
             });
         }
-                
-        return scroller;
+    }
+
+    private Parent selectColor(Card card, HBox cards) {
+        VBox colors = new VBox();
+
+        Button red = new Button("red");
+        red.setStyle("-fx-background-color: red");
+        red.setOnMouseClicked((event) -> {
+            card.setColor(Card.Color.RED);
+            if (game.playTurn(card)) {
+                setCards(cards);
+                rootLayout.setCenter(getTopCard());
+            }
+        });
+
+        Button green = new Button("green");
+        green.setStyle("-fx-background-color: green");
+        green.setOnMouseClicked((event) -> {
+            card.setColor(Card.Color.GREEN);
+            if (game.playTurn(card)) {
+                setCards(cards);
+                rootLayout.setCenter(getTopCard());
+            }
+        });
+
+        Button blue = new Button("blue");
+        blue.setStyle("-fx-background-color: blue");
+        blue.setOnMouseClicked((event) -> {
+            card.setColor(Card.Color.BLUE);
+            if (game.playTurn(card)) {
+                setCards(cards);
+                rootLayout.setCenter(getTopCard());
+            }
+        });
+
+        Button yellow = new Button("yellow");
+        yellow.setStyle("-fx-background-color: yellow");
+        yellow.setOnMouseClicked((event) -> {
+            card.setColor(Card.Color.YELLOW);
+            if (game.playTurn(card)) {
+                setCards(cards);
+                rootLayout.setCenter(getTopCard());
+            }
+        });
+
+        colors.getChildren().addAll(red, green, blue, yellow);
+        return colors;
+    }
+
+    private void setTopCard(ImageView topCard) {
+        topCard.setImage(new Image(getFilePath(game.getLastPlayedCard().toString())));
     }
 }

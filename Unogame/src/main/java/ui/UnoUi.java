@@ -14,7 +14,6 @@ import javafx.scene.layout.BorderPane;
  * @author k0tix
  */
 public class UnoUi extends Application {
-    private ViewController views;
         
     public static void main(String[] args) {
         launch(args);
@@ -29,16 +28,15 @@ public class UnoUi extends Application {
         
         BorderPane rootLayout = new BorderPane();
         
-        this.views = new ViewController(rootLayout, new Uno());
+        Uno game = new Uno();
         
-        Label gameData = new Label("Direction: " + this.views.getGame().getDirection() + " Players: " + this.views.getGame().getPlayers().size());
+        Label gameData = new Label("Direction: " + game.getDirection() + " Players: " + game.getPlayers().size());
         rootLayout.setTop(gameData);
         
-        StartView startScreen = new StartView(this.views);
+        StartView startScreen = new StartView(rootLayout, game);
         Scene scene = new Scene(rootLayout, 600, 400);
         
-        this.views.addView("startscreen", startScreen.getView());
-        this.views.setView("startscreen");
+        rootLayout.setCenter(startScreen.getView());
         
         stage.setTitle("Uno");
         stage.setScene(scene);

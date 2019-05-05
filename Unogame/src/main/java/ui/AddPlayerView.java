@@ -1,14 +1,13 @@
 package ui;
 
 import domain.Player;
-import java.util.ArrayList;
+import domain.Uno;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.HBox;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 
 /**
@@ -16,23 +15,22 @@ import javafx.scene.layout.VBox;
  * @author k0tix
  */
 public class AddPlayerView {
-
-    private ArrayList<Player> players;
     
-    private ViewController views;
+    private BorderPane rootLayout;
+    private Uno game;
     
-    public AddPlayerView(ArrayList<Player> players, ViewController views) {
-        this.players = players;
-        this.views = views;
+    public AddPlayerView(BorderPane rootLayout, Uno game) {
+        this.rootLayout = rootLayout;
+        this.game = game;
     }
     
     public Parent getView(int number) {
         VBox items = new VBox(10);
         
-        items.setStyle("-fx-background-color: #3f4144");
+        items.setStyle("-fx-background-color: #333333");
         items.setAlignment(Pos.CENTER);
         
-        Label title = new Label("Player " + (players.size()+1));
+        Label title = new Label("Player " + (this.game.getPlayerAmount()+1));
         title.setStyle("-fx-text-fill: white;" + "-fx-font-size: 24");
         
         TextField textField = new TextField();
@@ -43,13 +41,17 @@ public class AddPlayerView {
         
         addPlayerButton.setOnMouseClicked((event) -> {
             Player p = new Player(textField.getText());
-            this.players.add(p);
+            this.game.addPlayer(p);
             
-            if(this.players.size() == number) {
+            if(this.game.getPlayerAmount() == number) {
                 System.out.println("All players set");
-                this.views.setView(new GameView(views).getView(views.getGame().getCurrentPlayer().getCards()));
+                this.game.startRound(0);
+                GameView gameView = new GameView(rootLayout, game);
+                this.rootLayout.setCenter(gameView.getTopCard());
+                this.rootLayout.setBottom(gameView.getMainView());
             } else {
-                this.views.setView(new AddPlayerView(players, views).getView(number));
+                title.setText("Player " + (game.getPlayerAmount()+1));
+                textField.setText("");
             }
             
         });
