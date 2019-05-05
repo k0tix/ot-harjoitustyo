@@ -15,12 +15,14 @@ public class Uno {
     private int currentPlayer;
     private Card lastPlayedCard;
     private Deck deck;
+    private boolean gameEnd;
 
     public Uno(ScoreBoard scoreBoard) {
         this.score = scoreBoard;
         this.players = new ArrayList<>();
         this.direction = true;
         this.currentPlayer = 0;
+        this.gameEnd = false;
     }
 
     public Uno() {
@@ -66,18 +68,31 @@ public class Uno {
         if (!card.isPlayable(getLastPlayedCard())) {
             return false;
         }
-        
-        
-        this.players.get(currentPlayer).playCard(card);
+
+        getCurrentPlayer().playCard(card);
+
+        if (getCurrentPlayer().getCards().isEmpty()) {
+            //score.addToScore(getCurrentPlayer().getId(), calculateScore());
+            this.gameEnd = true;
+            System.out.println(calculateScore());
+        }
+
         this.lastPlayedCard = card;
-        
+
+        handleGameChanges();
+
+        return true;
+    }
+
+    private void handleGameChanges() {
         Type t = this.lastPlayedCard.getType();
+
         if (t.equals(Type.REVERSE)) {
             changeDirection();
         }
-        
+
         nextPlayer();
-        
+
         if (t.equals(Type.DRAW_TWO)) {
             getCurrentPlayer().giveCard(deck.pick());
             getCurrentPlayer().giveCard(deck.pick());
@@ -91,8 +106,10 @@ public class Uno {
         } else if (t.equals(Type.SKIP)) {
             nextPlayer();
         }
-        
-        return true;
+    }
+    
+    public boolean getGameEnd() {
+        return gameEnd;
     }
 
     public Player getCurrentPlayer() {
@@ -109,7 +126,6 @@ public class Uno {
             for (int i = 0; i < 7; i++) {
                 p.giveCard(deck.pick());
             }
-            System.out.println(p.getCards().size());
         }
     }
 
@@ -146,6 +162,23 @@ public class Uno {
                 this.currentPlayer -= 1;
             }
         }
+    }
 
+    public int calculateScore() {
+        int score = 0;
+        for (Player p : players) {
+            if (!p.getCards().isEmpty()) {
+                score += p.getCards().stream().map(c -> c.getPoints()).reduce(0, (a, b) -> a + b);
+            }
+        }
+        return score;
+    }
+
+    public Deck getDeck() {
+        return this.deck;
+    }
+
+    public ScoreBoard getScoreBoard() {
+        return this.score;
     }
 }
