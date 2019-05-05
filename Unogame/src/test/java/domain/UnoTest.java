@@ -65,7 +65,13 @@ public class UnoTest {
         uno.nextPlayer();
         assertEquals(players.get(2), uno.getCurrentPlayer());
         uno.nextPlayer();
-        assertEquals(players.get(1), uno.getCurrentPlayer());        
+        assertEquals(players.get(1), uno.getCurrentPlayer());
+    }
+
+    @Test
+    public void givingNullCardHandledCorreclty() {
+        players.get(0).giveCard(null);
+        assertEquals(0, players.get(0).getCards().size());
     }
 
     @Test
@@ -73,24 +79,24 @@ public class UnoTest {
         uno.startRound(0);
         assertEquals(7, uno.getPlayers().get(0).getCards().size());
     }
-    
+
     @Test
     public void gameEndReturnsCorrectValue() {
         assertEquals(false, uno.getGameEnd());
     }
-    
+
     @Test
     public void correctPlayerAmountReturned() {
         assertEquals(3, uno.getPlayerAmount());
     }
-    
+
     @Test
     public void correctScoreForDeck() {
         Player p = players.get(0);
         p.giveCard(new Card(Type.DRAW_FOUR, Color.WILD, Value.SPECIAL));
         p.giveCard(new Card(Type.DRAW_TWO, Color.YELLOW, Value.SPECIAL));
         p.giveCard(new Card(Type.NUMBER, Color.BLUE, Value.THREE));
-        
+
         assertEquals(73, uno.calculateScore());
     }
 }
