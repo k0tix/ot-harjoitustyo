@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
@@ -44,7 +43,6 @@ public class GameView extends View {
     }
 
     private String getFilePath(String fileName) {
-        System.out.println(fileName);
         return ClassLoader.getSystemClassLoader().getResource("images/" + fileName).toString();
     }
 
@@ -52,6 +50,9 @@ public class GameView extends View {
         setGameInfo();
         if (game.getGameEnd()) {
             rootLayout.setCenter(new EndGameView(rootLayout, game).getView());
+            rootLayout.setBottom(null);
+            rootLayout.setTop(null);
+            rootLayout.setCenter(null);
             return;
         }
 
@@ -91,8 +92,13 @@ public class GameView extends View {
                 if (cardObject.getType().equals(Card.Type.CHANGE_COLOR) || cardObject.getType().equals(Card.Type.DRAW_FOUR)) {
                     rootLayout.setCenter(selectColor(cardObject, cards));
                 } else if (game.playTurn(cardObject)) {
-                    setCards(cards);
-                    rootLayout.setCenter(getTopCard());
+                    if (game.getGameEnd()) {
+                        clearRootLayout();
+                        rootLayout.setCenter(new EndGameView(rootLayout, game).getView());
+                    } else {
+                        setCards(cards);
+                        rootLayout.setCenter(getTopCard());
+                    }
                 }
             });
         }
@@ -145,8 +151,14 @@ public class GameView extends View {
         red.setOnMouseClicked((event) -> {
             card.setColor(Card.Color.RED);
             if (game.playTurn(card)) {
-                setCards(cards);
-                rootLayout.setCenter(getTopCard());
+                if (game.getGameEnd()) {
+                    clearRootLayout();
+                    rootLayout.setCenter(new EndGameView(rootLayout, game).getView());
+                } else {
+                    setCards(cards);
+                    rootLayout.setCenter(getTopCard());
+                }
+
             }
         });
 
@@ -155,8 +167,13 @@ public class GameView extends View {
         green.setOnMouseClicked((event) -> {
             card.setColor(Card.Color.GREEN);
             if (game.playTurn(card)) {
-                setCards(cards);
-                rootLayout.setCenter(getTopCard());
+                if (game.getGameEnd()) {
+                    clearRootLayout();
+                    rootLayout.setCenter(new EndGameView(rootLayout, game).getView());
+                } else {
+                    setCards(cards);
+                    rootLayout.setCenter(getTopCard());
+                }
             }
         });
 
@@ -165,8 +182,13 @@ public class GameView extends View {
         blue.setOnMouseClicked((event) -> {
             card.setColor(Card.Color.BLUE);
             if (game.playTurn(card)) {
-                setCards(cards);
-                rootLayout.setCenter(getTopCard());
+                if (game.getGameEnd()) {
+                    clearRootLayout();
+                    rootLayout.setCenter(new EndGameView(rootLayout, game).getView());
+                } else {
+                    setCards(cards);
+                    rootLayout.setCenter(getTopCard());
+                }
             }
         });
 
@@ -175,8 +197,13 @@ public class GameView extends View {
         yellow.setOnMouseClicked((event) -> {
             card.setColor(Card.Color.YELLOW);
             if (game.playTurn(card)) {
-                setCards(cards);
-                rootLayout.setCenter(getTopCard());
+                if (game.getGameEnd()) {
+                    clearRootLayout();
+                    rootLayout.setCenter(new EndGameView(rootLayout, game).getView());
+                } else {
+                    setCards(cards);
+                    rootLayout.setCenter(getTopCard());
+                }
             }
         });
 

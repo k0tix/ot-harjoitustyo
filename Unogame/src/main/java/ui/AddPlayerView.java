@@ -1,6 +1,7 @@
 package ui;
 
 import domain.Player;
+import domain.ScoreBoard;
 import domain.Uno;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
@@ -44,6 +45,7 @@ public class AddPlayerView extends View{
             
             if(this.game.getPlayerAmount() == this.players) {
                 System.out.println("All players set");
+                this.game.setScoreBoard(new ScoreBoard(game.getPlayers()));
                 this.game.startRound(0);
                 GameView gameView = new GameView(rootLayout, game);
                 this.rootLayout.setCenter(gameView.getTopCard());
