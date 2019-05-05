@@ -1,5 +1,6 @@
 package domain;
 
+import domain.Card.*;
 import java.util.ArrayList;
 import org.junit.Before;
 import org.junit.Test;
@@ -21,7 +22,7 @@ public class UnoTest {
         players.add(new Player("Kerttu"));
         players.add(new Player("Mikko"));
 
-        uno = new Uno(new ScoreBoard(players));
+        uno = new Uno();
         uno.addPlayer(players.get(0));
         uno.addPlayer(players.get(1));
         uno.addPlayer(players.get(2));
@@ -63,11 +64,33 @@ public class UnoTest {
         uno.changeDirection();
         uno.nextPlayer();
         assertEquals(players.get(2), uno.getCurrentPlayer());
+        uno.nextPlayer();
+        assertEquals(players.get(1), uno.getCurrentPlayer());        
     }
 
     @Test
     public void correctAmountOfCardsAreDealt() {
         uno.startRound(0);
         assertEquals(7, uno.getPlayers().get(0).getCards().size());
+    }
+    
+    @Test
+    public void gameEndReturnsCorrectValue() {
+        assertEquals(false, uno.getGameEnd());
+    }
+    
+    @Test
+    public void correctPlayerAmountReturned() {
+        assertEquals(3, uno.getPlayerAmount());
+    }
+    
+    @Test
+    public void correctScoreForDeck() {
+        Player p = players.get(0);
+        p.giveCard(new Card(Type.DRAW_FOUR, Color.WILD, Value.SPECIAL));
+        p.giveCard(new Card(Type.DRAW_TWO, Color.YELLOW, Value.SPECIAL));
+        p.giveCard(new Card(Type.NUMBER, Color.BLUE, Value.THREE));
+        
+        assertEquals(73, uno.calculateScore());
     }
 }

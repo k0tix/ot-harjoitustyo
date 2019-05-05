@@ -29,21 +29,21 @@ public class ScoreBoardTest {
 
     @Test
     public void scoreBoardReturnZeroAsStartScore() {
-        assertEquals(0, score.getScore(players.get(0).getId()));
+        assertEquals(0, score.getScore(players.get(0)));
     }
     
     @Test
     public void scoreBoardUpdatesScoreCorrectly() {
-        HashMap<String, Integer> newScores = new HashMap<>();
-        newScores.put(players.get(0).getId(), 5);
-        newScores.put(players.get(1).getId(), 2);
-        newScores.put(players.get(2).getId(), 1);
+        HashMap<Player, Integer> newScores = new HashMap<>();
+        newScores.put(players.get(0), 5);
+        newScores.put(players.get(1), 2);
+        newScores.put(players.get(2), 1);
         
         score.updateScores(newScores);
         
-        assertEquals(5, score.getScore(players.get(0).getId()));
-        assertEquals(2, score.getScore(players.get(1).getId()));
-        assertEquals(1, score.getScore(players.get(2).getId()));
+        assertEquals(5, score.getScore(players.get(0)));
+        assertEquals(2, score.getScore(players.get(1)));
+        assertEquals(1, score.getScore(players.get(2)));
     }
     
 }
