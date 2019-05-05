@@ -15,4 +15,9 @@
 | 25.5 | 4 | käyttöliittymän jatkamista ja näkymä controllerin luonti |
 | 26.5 | 0.5 | testien kirjoittamista |
 | 26.5 | 1 | javadocin kirjoittelua |
-| Yhteensä | 20.3 | |
+| 28.5 | 2 | käyttöliittymän parantelua ja kuvien lisääminen |
+| 3.5 | 1 | testien kirjoittamista |
+| 5.5 | 5 | pelilogiikan parantelua |
+| 5.5 | 0.5 | testien kirjoittamista |
+| 5.5 | 1 | testausdokumentin kirjoittaminen |
+| Yhteensä | 29.8 | |
