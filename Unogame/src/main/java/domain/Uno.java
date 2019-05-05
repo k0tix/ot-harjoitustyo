@@ -2,6 +2,7 @@ package domain;
 
 import java.util.ArrayList;
 import domain.Card.*;
+import java.util.Random;
 
 /**
  * Luokka tarjoaa toiminnallisuutta Uno-pelin pelilogiikkaan ja vuorojen kulkuun
@@ -24,7 +25,7 @@ public class Uno {
         this.currentPlayer = 0;
         this.gameEnd = false;
     }
-    
+
     public void setScoreBoard(ScoreBoard scoreBoard) {
         this.score = scoreBoard;
     }
@@ -54,6 +55,10 @@ public class Uno {
         initializePlayersCards(deck);
 
         this.lastPlayedCard = deck.pick();
+
+        if (this.lastPlayedCard.getColor().equals(Color.WILD)) {
+            this.lastPlayedCard.setColor(Color.values()[new Random().nextInt(Color.values().length)]);
+        }
     }
 
     /**
@@ -84,9 +89,8 @@ public class Uno {
     }
 
     /**
-     * Metodi muutta pelin suuntaa, siirtää vuoroa
-     * ja jakaa nostettavia kortteja pelaajille
-     * viimeksi pelatun kortin mukaan
+     * Metodi muutta pelin suuntaa, siirtää vuoroa ja jakaa nostettavia kortteja
+     * pelaajille viimeksi pelatun kortin mukaan
      */
     private void handleGameChanges() {
         Type t = this.lastPlayedCard.getType();
@@ -111,7 +115,7 @@ public class Uno {
             nextPlayer();
         }
     }
-    
+
     public boolean getGameEnd() {
         return gameEnd;
     }
@@ -135,6 +139,7 @@ public class Uno {
 
     /**
      * Metodi palauttaa viimeisimmän pelatun kortin
+     *
      * @return viimeisin pelattu kortti
      */
     public Card getLastPlayedCard() {
@@ -143,6 +148,7 @@ public class Uno {
 
     /**
      * Metodi palauttaa pelin suunnan merkkijonona
+     *
      * @return pelin suunta
      */
     public String getDirection() {
@@ -177,7 +183,9 @@ public class Uno {
     }
 
     /**
-     * Metodi laskee voittaneen pelaajan pisteet muiden pelaajien korttine perusteella
+     * Metodi laskee voittaneen pelaajan pisteet muiden pelaajien korttine
+     * perusteella
+     *
      * @return voittaneen pelaajan pisteet
      */
     public int calculateScore() {
