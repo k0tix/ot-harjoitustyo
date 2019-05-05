@@ -1,7 +1,7 @@
 # Käyttöohje
 
 ## Konfigurointi
-Sovellus ei tarvitse vielä erillistä konfigurointia
+Sovellus ei tarvitse vielä erillistä konfigurointia. Pelaajamäärän ja pelaajien nimet asetetaan käyttöliittymän kautta.
 
 ## Sovelluksen käynnistäminen
 
@@ -17,3 +17,7 @@ Aloitus näkymässä valitset montako pelaaja on mukana
 ### Pelinäkymä
 
 ![Pelinäkymä](kuvat/pelinakyma.png)
+
+### Tulosnäkymä
+
+![Tulosnäkymä](kuvat/tulosnakyma.png)
