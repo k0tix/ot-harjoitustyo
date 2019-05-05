@@ -52,7 +52,6 @@ public class GameView extends View {
         setGameInfo();
         if (game.getGameEnd()) {
             rootLayout.setCenter(new EndGameView(rootLayout, game).getView());
-            System.out.println("HERE");
             return;
         }
 
@@ -91,17 +90,11 @@ public class GameView extends View {
 
                 if (cardObject.getType().equals(Card.Type.CHANGE_COLOR) || cardObject.getType().equals(Card.Type.DRAW_FOUR)) {
                     rootLayout.setCenter(selectColor(cardObject, cards));
-                    System.out.println("also 1");
                 } else if (game.playTurn(cardObject)) {
                     setCards(cards);
                     rootLayout.setCenter(getTopCard());
-                    System.out.println("also 2");
                 }
             });
-        }
-
-        if (game.getGameEnd()) {
-            rootLayout.setCenter(new Button("NOONAOSDBOSADBOSABD"));
         }
     }
 
