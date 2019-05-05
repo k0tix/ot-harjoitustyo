@@ -2,6 +2,7 @@ package domain;
 
 import java.util.ArrayList;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 /**
  * Luokka tarjoaa pelaajan toiminnallisuutta eli pitää kirjaa nimesta, luo
@@ -40,12 +41,21 @@ public class Player {
      * @param index kortin indeksi listassa
      * @return pelattava kortti
      */
-    public Card playCard(int index) {
-        return this.cards.remove(index);
+    public boolean playCard(Card card) {
+        return this.cards.remove(card);
     }
     
     public ArrayList<Card> getCards() {
         return this.cards;
     }
     
+    /**
+     * Palauttaa kortit joita pelaaja voi pelata
+     * @param topCard viimeisin pelattu kortti
+     * @return lista mahdollisista korteista
+     */
+    public ArrayList<Card> getPlayableCards(Card topCard) {
+        return this.cards.stream()
+                .filter((card) -> (card.isPlayable(topCard))).collect(Collectors.toCollection(ArrayList::new));
+    }
 }
