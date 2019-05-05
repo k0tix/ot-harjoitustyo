@@ -17,16 +17,16 @@ public class Uno {
     private Deck deck;
     private boolean gameEnd;
 
-    public Uno(ScoreBoard scoreBoard) {
-        this.score = scoreBoard;
+    public Uno() {
+        this.score = null;
         this.players = new ArrayList<>();
         this.direction = true;
         this.currentPlayer = 0;
         this.gameEnd = false;
     }
-
-    public Uno() {
-        this(null);
+    
+    public void setScoreBoard(ScoreBoard scoreBoard) {
+        this.score = scoreBoard;
     }
 
     public void addPlayer(Player p) {
@@ -72,9 +72,8 @@ public class Uno {
         getCurrentPlayer().playCard(card);
 
         if (getCurrentPlayer().getCards().isEmpty()) {
-            //score.addToScore(getCurrentPlayer().getId(), calculateScore());
+            score.addToScore(getCurrentPlayer(), calculateScore());
             this.gameEnd = true;
-            System.out.println(calculateScore());
         }
 
         this.lastPlayedCard = card;

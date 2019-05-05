@@ -30,6 +30,10 @@ public class Deck {
      * @return päällimainen kortti
      */
     public Card pick() {
+        if (deck.isEmpty()) {
+            return null;
+        }
+        
         return this.deck.remove(0);
     }
 

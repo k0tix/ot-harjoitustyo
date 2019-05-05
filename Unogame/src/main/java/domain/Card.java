@@ -72,10 +72,8 @@ public class Card {
         if (getType().equals(Type.CHANGE_COLOR) || getType().equals(Type.DRAW_FOUR)) {
             return true;
         } else if (getNumber().equals(topCard.getNumber()) && getNumber().getCardValue() != -1) {
-            System.out.println(getNumber().getCardValue() + " " + topCard.getNumber().getCardValue());
             return true;
         } else if (getColor().equals(topCard.getColor())) {
-            System.out.println(getColor() + " " + topCard.getColor());
             return true;
         } else if (getType().equals(topCard.getType()) && !getType().equals(Type.NUMBER)) {
             return true;
