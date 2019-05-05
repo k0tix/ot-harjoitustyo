@@ -30,9 +30,6 @@ public class UnoUi extends Application {
         
         Uno game = new Uno();
         
-        Label gameData = new Label("Direction: " + game.getDirection() + " Players: " + game.getPlayers().size());
-        rootLayout.setTop(gameData);
-        
         StartView startScreen = new StartView(rootLayout, game);
         Scene scene = new Scene(rootLayout, 600, 400);
         

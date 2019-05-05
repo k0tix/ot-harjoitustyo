@@ -1,8 +1,6 @@
 package ui;
 
-import domain.Player;
 import domain.Uno;
-import java.util.ArrayList;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
@@ -16,13 +14,10 @@ import javafx.scene.layout.VBox;
  *
  * @author k0tix
  */
-public class StartView {    
-    private Uno game;
-    private BorderPane rootLayout;
-    
+public class StartView extends View {    
+
     public StartView(BorderPane rootLayout, Uno game) {
-        this.game = game;
-        this.rootLayout = rootLayout;
+        super(rootLayout, game);
     }
     
     public Parent getView() {
@@ -46,10 +41,8 @@ public class StartView {
         
         playButton.setOnMouseClicked((event) -> {
             int players = playerAmount.getValue();
-            
-            this.game.startRound(0);
-            
-            this.rootLayout.setCenter(new AddPlayerView(rootLayout, game).getView(players));
+                        
+            this.rootLayout.setCenter(new AddPlayerView(rootLayout, game, players).getView());
         });
         
         return startmenu;

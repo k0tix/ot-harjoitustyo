@@ -14,17 +14,16 @@ import javafx.scene.layout.VBox;
  *
  * @author k0tix
  */
-public class AddPlayerView {
+public class AddPlayerView extends View{
     
-    private BorderPane rootLayout;
-    private Uno game;
+    private int players;
     
-    public AddPlayerView(BorderPane rootLayout, Uno game) {
-        this.rootLayout = rootLayout;
-        this.game = game;
+    public AddPlayerView(BorderPane rootLayout, Uno game, int players) {
+        super(rootLayout, game);
+        this.players = players;
     }
     
-    public Parent getView(int number) {
+    public Parent getView() {
         VBox items = new VBox(10);
         
         items.setStyle("-fx-background-color: #333333");
@@ -43,17 +42,16 @@ public class AddPlayerView {
             Player p = new Player(textField.getText());
             this.game.addPlayer(p);
             
-            if(this.game.getPlayerAmount() == number) {
+            if(this.game.getPlayerAmount() == this.players) {
                 System.out.println("All players set");
                 this.game.startRound(0);
                 GameView gameView = new GameView(rootLayout, game);
                 this.rootLayout.setCenter(gameView.getTopCard());
-                this.rootLayout.setBottom(gameView.getMainView());
+                this.rootLayout.setBottom(gameView.getView());
             } else {
                 title.setText("Player " + (game.getPlayerAmount()+1));
                 textField.setText("");
             }
-            
         });
         
         items.getChildren().addAll(title, textField, addPlayerButton);
