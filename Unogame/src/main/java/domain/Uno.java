@@ -83,6 +83,11 @@ public class Uno {
         return true;
     }
 
+    /**
+     * Metodi muutta pelin suuntaa, siirtää vuoroa
+     * ja jakaa nostettavia kortteja pelaajille
+     * viimeksi pelatun kortin mukaan
+     */
     private void handleGameChanges() {
         Type t = this.lastPlayedCard.getType();
 
@@ -128,10 +133,18 @@ public class Uno {
         }
     }
 
+    /**
+     * Metodi palauttaa viimeisimmän pelatun kortin
+     * @return viimeisin pelattu kortti
+     */
     public Card getLastPlayedCard() {
         return this.lastPlayedCard;
     }
 
+    /**
+     * Metodi palauttaa pelin suunnan merkkijonona
+     * @return pelin suunta
+     */
     public String getDirection() {
         return this.direction ? "clockwise" : "anticlockwise";
     }
@@ -163,6 +176,10 @@ public class Uno {
         }
     }
 
+    /**
+     * Metodi laskee voittaneen pelaajan pisteet muiden pelaajien korttine perusteella
+     * @return voittaneen pelaajan pisteet
+     */
     public int calculateScore() {
         int score = 0;
         for (Player p : players) {

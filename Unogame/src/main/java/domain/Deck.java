@@ -33,7 +33,7 @@ public class Deck {
         if (deck.isEmpty()) {
             return null;
         }
-        
+
         return this.deck.remove(0);
     }
 

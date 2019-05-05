@@ -5,41 +5,47 @@ package domain;
  *
  */
 public class Card {
+
     /**
      * Mahdolliset kortin tyypit
      */
-    public enum Type { NUMBER, SKIP, REVERSE, DRAW_TWO, CHANGE_COLOR, DRAW_FOUR }
-    
+    public enum Type {
+        NUMBER, SKIP, REVERSE, DRAW_TWO, CHANGE_COLOR, DRAW_FOUR
+    }
+
     /**
      * Mahdolliset kortin värit
      */
-    public enum Color { RED, YELLOW, GREEN, BLUE, WILD }
-    
+    public enum Color {
+        RED, YELLOW, GREEN, BLUE, WILD
+    }
+
     /**
      * Mahdolliset kortin arvot
      */
     public enum Value {
         ZERO(0), ONE(1), TWO(2), THREE(3), FOUR(4), FIVE(5), SIX(6), SEVEN(7), EIGHT(8), NINE(9), SPECIAL(-1);
-        
+
         private int cardValue;
-       
+
         private Value(int value) {
             this.cardValue = value;
         }
-        
+
         /**
          * Metodi palauttaa kortin arvon numerona
+         *
          * @return kortin numeroarvo
          */
         public int getCardValue() {
             return cardValue;
         }
     }
-    
+
     private final Type type; //Card can be a number, skip, reverse, draw two, wild or wild draw four
     private Color color; //Red, yellow, green, blue or wild if the color has not been set yet
     private final Value number; //normal cards 0-9, special card -1
-    
+
     public Card(Type type, Color color, Value number) {
         this.type = type;
         this.color = color;
@@ -57,14 +63,14 @@ public class Card {
     public Value getNumber() {
         return number;
     }
-    
+
     public void setColor(Color color) {
         this.color = color;
     }
-    
+
     /**
      * Metodi kertoo voiko kyseissen kortin pelata viimeksi pelatun korin päälle
-     * 
+     *
      * @param topCard viimeisin pelattu kortti
      * @return voiko kortin pelata
      */
@@ -81,9 +87,10 @@ public class Card {
 
         return false;
     }
-    
+
     /**
      * Metodi palauttaa kortin pistearvon
+     *
      * @return kortista saatavat pisteet
      */
     public int getPoints() {
@@ -97,10 +104,10 @@ public class Card {
             return getNumber().getCardValue();
         }
     }
-    
+
     /**
-    * Palauttaa kortin kuvatiedoston nimen värin, tyypin ja numeron mukaan
-    */
+     * Palauttaa kortin kuvatiedoston nimen värin, tyypin ja numeron mukaan
+     */
     @Override
     public String toString() {
         String color = this.color.toString().toLowerCase();
@@ -121,5 +128,4 @@ public class Card {
                 return "Card unknown";
         }
     }
-    
 }
