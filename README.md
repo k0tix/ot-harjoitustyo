@@ -24,16 +24,19 @@ mvn test
 ```
 mvn test jacoco:report
 ```
+Raportti löytyy tiedostosta _target/site/jacoco/index.html_
 
 ### Checkstyle
 ```
 mvn jxr:jxr checkstyle:checkstyle
 ```
+Raportti löytyy tiedostosta _target/site/checkstyle.html_
 
 ### JavaDoc
 ```
 mvn javadoc:javadoc
 ```
+JavaDoc löytyy tiedostosta _target/site/apidocs/index.html_
 
 ### Jar-tiedoston luonti ja suoritus
 ```
