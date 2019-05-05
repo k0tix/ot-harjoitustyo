@@ -1,12 +1,10 @@
 package ui;
 
-import domain.Deck;
 import domain.Uno;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 
 /**
