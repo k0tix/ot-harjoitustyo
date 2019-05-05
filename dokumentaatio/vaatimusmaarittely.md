@@ -1,8 +1,7 @@
 # Vaatimusmäärittely Uno-korttipelille
 
 ## Sovelluksen tarkoitus
-Sovellus toteuttaa uno-korttipelin ja mahdollistaa uno-korttipelin
-pelaamisen konetta ja toisia pelaajia vastaan.
+Sovellus toteuttaa uno-korttipelin toisia pelaajia vastaan.
 
 ## Perusversion tarjoama toiminnallisuus
 Normaali uno-korttipeli logiikka:
@@ -12,17 +11,14 @@ Ennen peliä
 * pelaajille voi antaa yksilöidyt nimet
 * määritetään pelataanko
   *  yksi peli 
-  *  useampi peli siihen asti, että ensimmäinen pelaaja saa 500 pistettä
 
 Pelin aikana
 * pelaaja näkee omat korttinsa sekä pakan päällimäisen kortin
 * pelivuoro siirty pelaajalta pelaajalle
-* jos pelaajalla kestää liian kauan -> kone pelaa pelaajalta satunnaisesti kortin ja siirtä vuoron seuraavalle
 
 Pelin jälkeen
-* pelaajat näkevät joko
-  *  voittajan nimen
-  *  sen hetkisen tulostaulun pelaajien pisteistä
+* pelaajat näkevät 
+  *  tulostaulun pelaajien pisteistä
 
 ### Kuvaus
 
@@ -72,3 +68,5 @@ yhteensä 108 korttia
 Perusversion jälkeen järjestelmää täydennetään ajan salliessa esim. seuraavilla toiminnallisuuksilla:
 * Telegrambot käyttöliittymä javafx lisäksi
 * Erilaisia pelimuotoja normaalin unon lisäksi esim. tiimipohjainen versio, pikapeli tai viimeinen hengissä
+* Tulosten tallentaminen
+* Pelien tallentaminen, jotta pitkälle edennyt peli ei katoa
