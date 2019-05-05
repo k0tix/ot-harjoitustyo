@@ -12,30 +12,30 @@ import javafx.scene.layout.BorderPane;
  * @author k0tix
  */
 public class UnoUi extends Application {
-        
+
     public static void main(String[] args) {
         launch(args);
     }
-    
+
     @Override
     public void init() throws Exception {
     }
 
     @Override
     public void start(Stage stage) throws Exception {
-        
+
         BorderPane rootLayout = new BorderPane();
-        
+
         Uno game = new Uno();
-        
+
         StartView startScreen = new StartView(rootLayout, game);
-        Scene scene = new Scene(rootLayout, 600, 400);
-        
+        Scene scene = new Scene(rootLayout, 900, 600);
+
         rootLayout.setCenter(startScreen.getView());
-        
+
         stage.setTitle("Uno");
         stage.setScene(scene);
         stage.show();
     }
-    
+
 }
