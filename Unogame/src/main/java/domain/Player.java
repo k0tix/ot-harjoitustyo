@@ -43,7 +43,7 @@ public class Player {
     /**
      * Pelaa kortin pelaajan kädestä
      *
-     * @param index kortin indeksi listassa
+     * @param card kortti
      * @return pelattava kortti
      */
     public boolean playCard(Card card) {

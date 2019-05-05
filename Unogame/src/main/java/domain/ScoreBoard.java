@@ -24,7 +24,7 @@ public class ScoreBoard {
     
     /**
      * Metodi kasvattaa pelaajan kokonaispisteitä
-     * @param playerId pelaajan tunniste
+     * @param p pelaaja
      * @param amount kasvatettava pistemäärä
      */
     public void addToScore(Player p, int amount) {
