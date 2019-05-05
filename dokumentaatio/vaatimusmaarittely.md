@@ -30,7 +30,7 @@ Uno on korttipeli, jossa pelaajilla on kädessään kortteja. Kortteja pelataan 
 
 * Korttipakka sekoitetaan ja jokaiselle pelaajalle jaetaan 7 korttia
 * Pakan ylin kortti asetetaan pöydälle alkukortiksi ja loput pakasta toimii nostopakkana
-* Pelin aloittaja valitaan satunnaisesti
+* Pelin aloittaja on ensimmäisenä nimen lisännyt pelaaja
 
 #### Peli
 
