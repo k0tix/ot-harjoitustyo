@@ -63,23 +63,46 @@ public class Card {
     }
     
     /**
-    * Palauttaa kortin tyypin ja värin tekstimuodossa
+     * Metodi kertoo voiko kyseissen kortin pelata viimeksi pelatun korin päälle
+     * 
+     * @param topCard viimeisin pelattu kortti
+     * @return voiko kortin pelata
+     */
+    public boolean isPlayable(Card topCard) {
+        if (getType().equals(Type.CHANGE_COLOR) || getType().equals(Type.DRAW_FOUR)) {
+            return true;
+        } else if (getNumber().equals(topCard.getNumber()) && getNumber().getCardValue() != -1) {
+            System.out.println(getNumber().getCardValue() + " " + topCard.getNumber().getCardValue());
+            return true;
+        } else if (getColor().equals(topCard.getColor())) {
+            System.out.println(getColor() + " " + topCard.getColor());
+            return true;
+        } else if (getType().equals(topCard.getType()) && !getType().equals(Type.NUMBER)) {
+            return true;
+        }
+
+        return false;
+    }
+    
+    /**
+    * Palauttaa kortin kuvatiedoston nimen värin, tyypin ja numeron mukaan
     */
     @Override
     public String toString() {
+        String color = this.color.toString().toLowerCase();
         switch (this.type) {
             case NUMBER:
-                return String.format("%s %d", this.color, this.number.getCardValue());
+                return String.format("%s_%d.png", color, this.number.getCardValue());
             case REVERSE:
-                return String.format("%s %s", this.color, this.type);
+                return String.format("%s_reverse.png", color);
             case SKIP:
-                return String.format("%s %s", this.color, this.type);
+                return String.format("%s_skip.png", color);
             case DRAW_TWO:
-                return String.format("%s %s", this.color, this.type);
+                return String.format("%s_picker.png", this.color.toString().toLowerCase());
             case CHANGE_COLOR:
-                return "" + this.type;
+                return "wild_color_changer.png";
             case DRAW_FOUR:
-                return "" + this.type;
+                return "wild_pick_four.png";
             default:
                 return "Card unknown";
         }
