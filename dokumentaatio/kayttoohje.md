@@ -18,6 +18,14 @@ Aloitus näkymässä valitset montako pelaaja on mukana
 
 ![Pelinäkymä](kuvat/pelinakyma.png)
 
+#### Värin valinta
+
+![Värin valinta](kuvat/varinvalinta.png)
+
+#### Kortin nostaminen
+
+![Kortin nostaminen](kuvat/kortinnosto.png)
+
 ### Tulosnäkymä
 
 ![Tulosnäkymä](kuvat/tulosnakyma.png)
