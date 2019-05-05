@@ -16,23 +16,27 @@ public class Uno {
     private Card lastPlayedCard;
     private Deck deck;
 
-    public Uno(ScoreBoard scoreBoard, ArrayList<Player> players) {
+    public Uno(ScoreBoard scoreBoard) {
         this.score = scoreBoard;
-        this.players = players;
+        this.players = new ArrayList<>();
         this.direction = true;
         this.currentPlayer = 0;
     }
 
     public Uno() {
-        this(null, new ArrayList<>());
+        this(null);
     }
 
-    public void setPlayers(ArrayList<Player> players) {
-        this.players = players;
+    public void addPlayer(Player p) {
+        this.players.add(p);
     }
 
     public ArrayList<Player> getPlayers() {
         return this.players;
+    }
+
+    public int getPlayerAmount() {
+        return this.players.size();
     }
 
     /**
@@ -56,55 +60,39 @@ public class Uno {
      * pelatun kortin mukaan
      *
      * @param card pelattu kortti
-     * @param index kortin indeksi
      * @return onnistuiko kortin pelaaminen
      */
-    public boolean playTurn(Card card, int index) {
-        if (!isCardPlayable(card)) {
+    public boolean playTurn(Card card) {
+        if (!card.isPlayable(getLastPlayedCard())) {
             return false;
         }
-
-        this.lastPlayedCard = this.players.get(currentPlayer).playCard(index);
-        nextPlayer();
-
+        
+        
+        this.players.get(currentPlayer).playCard(card);
+        this.lastPlayedCard = card;
+        
         Type t = this.lastPlayedCard.getType();
+        if (t.equals(Type.REVERSE)) {
+            changeDirection();
+        }
+        
+        nextPlayer();
+        
         if (t.equals(Type.DRAW_TWO)) {
             getCurrentPlayer().giveCard(deck.pick());
             getCurrentPlayer().giveCard(deck.pick());
+            nextPlayer();
         } else if (t.equals(Type.DRAW_FOUR)) {
             getCurrentPlayer().giveCard(deck.pick());
             getCurrentPlayer().giveCard(deck.pick());
             getCurrentPlayer().giveCard(deck.pick());
             getCurrentPlayer().giveCard(deck.pick());
+            nextPlayer();
         } else if (t.equals(Type.SKIP)) {
             nextPlayer();
-        } else if (t.equals(Type.REVERSE)) {
-            lastPlayer();
         }
-
+        
         return true;
-    }
-
-    /**
-     * Metodi kertoo voiko kyseisen kortin pelata viimeksi pelatun kortin päälle
-     *
-     * @param card pelattava kortti
-     * @return voiko kortin pelata
-     */
-    public boolean isCardPlayable(Card card) {
-        if (card.getColor().equals(Color.WILD)) {
-            return true;
-        } else if (card.getNumber().equals(lastPlayedCard.getNumber()) && card.getNumber().getCardValue() != -1) {
-            System.out.println(card.getNumber().getCardValue() + " " + lastPlayedCard.getNumber().getCardValue());
-            return true;
-        } else if (card.getColor().equals(lastPlayedCard.getColor())) {
-            System.out.println(card.getColor() + " " + lastPlayedCard.getColor());
-            return true;
-        } else if (card.getType().equals(lastPlayedCard.getType()) && !card.getType().equals(Type.NUMBER)) {
-            return true;
-        }
-
-        return false;
     }
 
     public Player getCurrentPlayer() {
@@ -141,24 +129,23 @@ public class Uno {
     }
 
     /**
-     * Metodi siirtää vuoron seuraavalle pelaajalle
+     * Metodi siirtää vuoron seuraavalle pelaajalle suunnan mukaan
      */
     public void nextPlayer() {
-        if (this.currentPlayer + 1 < players.size()) {
-            this.currentPlayer += 1;
-        } else {
-            this.currentPlayer = 0;
-        }
-    }
 
-    /**
-     * Metodi siirtää vuoron edelliselle pelaajalle
-     */
-    public void lastPlayer() {
-        if (this.currentPlayer - 1 < 0) {
-            this.currentPlayer = players.size() - 1;
+        if (this.direction) {
+            if (this.currentPlayer + 1 < players.size()) {
+                this.currentPlayer += 1;
+            } else {
+                this.currentPlayer = 0;
+            }
         } else {
-            this.currentPlayer -= 1;
+            if (this.currentPlayer - 1 < 0) {
+                this.currentPlayer = players.size() - 1;
+            } else {
+                this.currentPlayer -= 1;
+            }
         }
+
     }
 }
