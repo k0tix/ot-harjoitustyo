@@ -10,30 +10,33 @@ import static org.junit.Assert.*;
  * @author k0tix
  */
 public class UnoTest {
-    
+
     Uno uno;
     ArrayList<Player> players;
-    
+
     @Before
     public void setUp() {
         players = new ArrayList<>();
-        players.add(new Player(("Pekka")));
-        players.add(new Player(("Matti")));
-        players.add(new Player(("Kerttu")));
-        
-        uno = new Uno(new ScoreBoard(players), players);
+        players.add(new Player("Pekka"));
+        players.add(new Player("Kerttu"));
+        players.add(new Player("Mikko"));
+
+        uno = new Uno(new ScoreBoard(players));
+        uno.addPlayer(players.get(0));
+        uno.addPlayer(players.get(1));
+        uno.addPlayer(players.get(2));
     }
 
     @Test
     public void directionIsCorrectAfterInitialization() {
         assertEquals("clockwise", uno.getDirection());
     }
-    
+
     @Test
     public void firstPlayerIsCorrectAfterInitialization() {
         assertEquals(players.get(0), uno.getCurrentPlayer());
     }
-    
+
     @Test
     public void directionIsChangedCorrectly() {
         uno.changeDirection();
@@ -41,13 +44,14 @@ public class UnoTest {
         uno.changeDirection();
         assertEquals("clockwise", uno.getDirection());
     }
-    
+
     @Test
-    public void playersAreSettedCorrectly() {
-        uno.setPlayers(new ArrayList<>());
-        assertTrue(uno.getPlayers().isEmpty());
+    public void playersAreAddedCorrectly() {
+        assertEquals(3, uno.getPlayers().size());
+        uno.addPlayer(new Player("Juuso"));
+        assertEquals(4, uno.getPlayers().size());
     }
-    
+
     @Test
     public void nextPlayerIsCalculatedCorrectly() {
         assertEquals(players.get(0), uno.getCurrentPlayer());
@@ -56,18 +60,11 @@ public class UnoTest {
         uno.nextPlayer();
         uno.nextPlayer();
         assertEquals(players.get(0), uno.getCurrentPlayer());
-    }
-    
-    @Test
-    public void lastPlayerIsCalculatedCorrectly() {
-        assertEquals(players.get(0), uno.getCurrentPlayer());
-        uno.lastPlayer();
+        uno.changeDirection();
+        uno.nextPlayer();
         assertEquals(players.get(2), uno.getCurrentPlayer());
-        uno.lastPlayer();
-        uno.lastPlayer();
-        assertEquals(players.get(0), uno.getCurrentPlayer());
     }
-    
+
     @Test
     public void correctAmountOfCardsAreDealt() {
         uno.startRound(0);
