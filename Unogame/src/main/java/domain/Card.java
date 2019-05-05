@@ -85,6 +85,22 @@ public class Card {
     }
     
     /**
+     * Metodi palauttaa kortin pistearvon
+     * @return kortista saatavat pisteet
+     */
+    public int getPoints() {
+        if (getNumber().equals(Value.SPECIAL)) {
+            if (getType().equals(Type.DRAW_FOUR) || getType().equals(Type.CHANGE_COLOR)) {
+                return 50;
+            } else {
+                return 20;
+            }
+        } else {
+            return getNumber().getCardValue();
+        }
+    }
+    
+    /**
     * Palauttaa kortin kuvatiedoston nimen värin, tyypin ja numeron mukaan
     */
     @Override
