@@ -44,5 +44,9 @@ cd target/
 java -jar Unogame-1.0-SNAPSHOT.jar
 ```
 
-## Github release
-[Linkki github releaseen](https://github.com/k0tix/ot-harjoitustyo/releases/tag/viikko6)
+## Github releaset
+[Viikko 5](https://github.com/k0tix/ot-harjoitustyo/releases/tag/viikko5)
+
+[Viikko 6](https://github.com/k0tix/ot-harjoitustyo/releases/tag/viikko6)
+
+[Loppupalautus](https://github.com/k0tix/ot-harjoitustyo/releases/tag/viikko7)
