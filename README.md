@@ -11,6 +11,8 @@ Sovellus toteuttaa uno-korttipelin ja mahdollistaa sen pelaamisen konetta ja toi
 
 [Käyttöohje](https://github.com/k0tix/ot-harjoitustyo/blob/master/dokumentaatio/kayttoohje.md)
 
+[Testausdokumentti](https://github.com/k0tix/ot-harjoitustyo/blob/master/dokumentaatio/testaus.md)
+
 ## Komennot
 
 ### Testit
