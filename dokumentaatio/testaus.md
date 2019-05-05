@@ -12,7 +12,7 @@ Luokille [Card]() ja [Deck]() on tehty yksikkötestejä joita integraatiotestit 
 
 ### Testauskattavuus
 
-Sovelluksen testauksen rivikattavuus on 82% ja haarautumakattavuus 76%. Käyttöliittymäkerrosta testattiin manuaalisesti, eikä sille ole automaattisia testejä.
+Sovelluksen testauksen rivikattavuus on 87% ja haarautumakattavuus 80%. Käyttöliittymäkerrosta testattiin manuaalisesti, eikä sille ole automaattisia testejä.
 ![jacoco report](kuvat/jacocoreport.png)
 
 ## Järjestelmätestaus
